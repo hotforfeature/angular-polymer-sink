@@ -11,14 +11,22 @@ import { OnPolymerChange, PolymerProperty } from '../angular-polymer';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PaperInputElementsComponent implements OnPolymerChange {
-  @PolymerProperty() paperCheckboxActive;
+  // <paper-checkbox>
   @PolymerProperty() paperCheckboxChecked;
   @PolymerProperty() paperCheckboxDisabled;
-  @PolymerProperty() paperCheckboxInvalid;
+  // <paper-radio-button>
+  @PolymerProperty() paperRadioButtonChecked;
+  @PolymerProperty() paperRadioButtonDisabled;
+  // <paper-radio-group>
+  @PolymerProperty() paperRadioGroupSelected;
 
   constructor(private changeRef: ChangeDetectorRef) { }
 
   onPolymerChange() {
     this.changeRef.detectChanges();
+  }
+
+  onPaperRadioGroupSelectedItem(e: CustomEvent) {
+    console.log('<paper-radio-group> selectedItem', e.detail.value);
   }
 }
