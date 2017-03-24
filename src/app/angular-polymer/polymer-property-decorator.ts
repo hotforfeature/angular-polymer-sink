@@ -5,8 +5,7 @@ interface PolymerPropertyDecorator {
   unwrap<T>(value: T): T;
 }
 
-export const PolymerProperty = <PolymerPropertyDecorator>function decoratePolymerProperty():
-    PropertyDecorator {
+export function createPolymerPropertyDecorator(): PropertyDecorator {
   return (target: any, propertyKey: string) => {
     const desc = Object.getOwnPropertyDescriptor(target, propertyKey);
     if (desc) {
@@ -39,10 +38,13 @@ export const PolymerProperty = <PolymerPropertyDecorator>function decoratePolyme
   };
 }
 
-PolymerProperty.unwrap = function unwrapPolymerEvent<T>(value: T): T {
+export function unwrapPolymerEvent<T>(value: T): T {
   if (value instanceof CustomEvent) {
     return PolymerProperty.unwrap(<T>value.detail.value);
   } else {
     return value;
   }
-};
+}
+
+export const PolymerProperty = <PolymerPropertyDecorator>createPolymerPropertyDecorator;
+PolymerProperty.unwrap = unwrapPolymerEvent;
