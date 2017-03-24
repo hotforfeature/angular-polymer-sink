@@ -6,12 +6,14 @@ import { HttpModule } from '@angular/http';
 import { PolymerModule } from './angular-polymer';
 import { PaperElementsModule } from './angular-polymer/paper-elements';
 import { AppComponent } from './app.component';
+import { IronElementsComponent } from './iron-elements/iron-elements.component';
 import { PaperInputElementsComponent } from './paper-input-elements/paper-input-elements.component';
 import { PaperUiElementsComponent } from './paper-ui-elements/paper-ui-elements.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    IronElementsComponent,
     PaperInputElementsComponent,
     PaperUiElementsComponent
   ],

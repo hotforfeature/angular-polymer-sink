@@ -1,0 +1,15 @@
+<h2>&lt;iron-list&gt;</h2>
+<div>
+
+</div>
+<div>
+  <iron-list [items]="ironListItems">
+    <ng-template polymer-template>
+      <!-- This is a Polymer template. Angular has no power here. -->
+      <div>
+        <span>ID: [[item.id]]</span>
+        <span>Value: [[item.value]]</span>
+      </div>
+    </ng-template>
+  </iron-list>
+</div>
