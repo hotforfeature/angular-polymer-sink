@@ -1,0 +1,9 @@
+{
+  "name": "angular-polymer-sink",
+  "dependencies": {
+    "polymer": "Polymer/polymer#2.0.0-rc.3",
+    "paper-button": "PolymerElements/paper-button#2.0-preview",
+    "paper-styles": "PolymerElements/paper-styles#2.0-preview",
+    "paper-checkbox": "PolymerElements/paper-checkbox#2.0-preview"
+  }
+}

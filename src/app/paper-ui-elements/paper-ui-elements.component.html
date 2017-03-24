@@ -1,0 +1,33 @@
+<h2>&lt;paper-button&gt;</h2>
+<div>
+  <paper-button primary>Link</paper-button>
+  <paper-button primary-bg raised>Raised</paper-button>
+  <paper-button accent-bg raised toggles>Toggles</paper-button>
+  <paper-button disabled>Disabled</paper-button>
+</div>
+<div>
+  <h3>Two-Way Events</h3>
+  <label>Active</label>
+  <input type="checkbox" [(ngModel)]="paperButtonActive">
+  <label>Disabled</label>
+  <input type="checkbox" [(ngModel)]="paperButtonDisabled">
+  <label>Focused</label>
+  <input type="checkbox" [(ngModel)]="paperButtonFocused">
+</div>
+<div>
+  <h3>One-Way Events</h3>
+  <label>No Ink</label>
+  <input type="checkbox" [(ngModel)]="paperButtonNoInk">
+  <label>Raised</label>
+  <input type="checkbox" [(ngModel)]="paperButtonRaised">
+  <label>Toggles</label>
+  <input type="checkbox" [(ngModel)]="paperButtonToggles">
+</div>
+<div>
+  <paper-button [(active)]="paperButtonActive"
+      [(disabled)]="paperButtonDisabled"
+      [(focused)]="paperButtonFocused"
+      [noink]="paperButtonNoInk"
+      [raised]="paperButtonRaised"
+      [toggles]="paperButtonToggles">Button</paper-button>
+</div>

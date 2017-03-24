@@ -1,0 +1,22 @@
+/* Theme utility attributes */
+/*
+We cannot use classes, because Angular's renderer will override classes. See
+https://github.com/angular/angular/issues/15399
+*/
+[primary-bg] {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+[primary] {
+  color: var(--primary-color);
+}
+
+[accent-bg] {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+[accent] {
+  color: var(--accent-color);
+}

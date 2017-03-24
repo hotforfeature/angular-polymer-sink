@@ -1,0 +1,60 @@
+<h2>&lt;paper-checkbox&gt;</h2>
+<div>
+  <style is="custom-style">
+    paper-checkbox {
+      font-family: 'Roboto', sans-serif;
+      margin: 24px;
+    }
+
+    paper-checkbox:first-child {
+      --primary-color: #ff5722;
+    }
+
+    paper-checkbox.styled {
+      align-self: center;
+      border: 1px solid var(--paper-green-200);
+      padding: 8px 16px;
+      --paper-checkbox-checked-color: var(--paper-green-500);
+      --paper-checkbox-checked-ink-color: var(--paper-green-500);
+      --paper-checkbox-unchecked-color: var(--paper-green-900);
+      --paper-checkbox-unchecked-ink-color: var(--paper-green-900);
+      --paper-checkbox-label-color: var(--paper-green-500);
+      --paper-checkbox-label-spacing: 0;
+      --paper-checkbox-margin: 8px 16px 8px 0;
+      --paper-checkbox-vertical-align: top;
+    }
+
+    paper-checkbox .subtitle {
+      display: block;
+      font-size: 0.8em;
+      margin-top: 2px;
+      max-width: 150px;
+    }
+  </style>
+
+  <paper-checkbox checked>Checked</paper-checkbox>
+  <paper-checkbox class="styled">
+    Checkbox
+    <span class="subtitle">
+      With a longer label
+    </span>
+  </paper-checkbox>
+  <paper-checkbox disabled>Disabled</paper-checkbox>
+</div>
+<div>
+  <h3>Two-Way Events</h3>
+  <label>Active</label>
+  <input type="checkbox" [(ngModel)]="paperCheckboxActive">
+  <label>Checked</label>
+  <input type="checkbox" [(ngModel)]="paperCheckboxChecked">
+  <label>Disabled</label>
+  <input type="checkbox" [(ngModel)]="paperCheckboxDisabled">
+  <label>Invalid</label>
+  <input type="checkbox" [(ngModel)]="paperCheckboxInvalid">
+</div>
+<div>
+  <paper-checkbox [(active)]="paperCheckboxActive"
+      [(checked)]="paperCheckboxChecked"
+      [(disabled)]="paperCheckboxDisabled"
+      [(invalid)]="paperCheckboxInvalid">Checkbox</paper-checkbox>
+</div>
