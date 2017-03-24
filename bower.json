@@ -8,6 +8,7 @@
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#2.0-preview",
     "paper-radio-button": "PolymerElements/paper-radio-button#2.0-preview",
     "paper-radio-group": "PolymerElements/paper-radio-group#2.0-preview",
-    "iron-list": "PolymerElements/iron-list#2.0-preview"
+    "iron-list": "PolymerElements/iron-list#2.0-preview",
+    "iron-collapse": "PolymerElements/iron-collapse#2.0-preview"
   }
 }

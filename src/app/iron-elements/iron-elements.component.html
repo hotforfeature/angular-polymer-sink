@@ -1,3 +1,15 @@
+<h2>&lt;iron-collapse&gt;</h2>
+<div>
+  <label>Opened</label>
+  <input type="checkbox" [(ngModel)]="ironCollapseOpened">
+  <button (click)="collapse.toggle()">Toggle</button>
+</div>
+<div>
+  <iron-collapse #collapse [(opened)]="ironCollapseOpened">
+    <div>Collapsed content</div>
+  </iron-collapse>
+</div>
+
 <h2>&lt;iron-list&gt;</h2>
 <div>
 

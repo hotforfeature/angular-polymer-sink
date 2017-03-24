@@ -8,6 +8,7 @@ import { OnPolymerChange, PolymerProperty } from '../angular-polymer';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IronElementsComponent implements OnPolymerChange {
+  @PolymerProperty() ironCollapseOpened;
   @PolymerProperty() ironListItems = [
     {
       id: 1,
