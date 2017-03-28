@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';
 
-import { PolymerDirective } from '../polymer.directive';
+import { PolymerDirective } from '../../angular-polymer';
 
 @Directive({
   selector: `iron-a11y-announcer, iron-a11y-keys, iron-ajax, iron-autogrow-textarea, iron-collapse,

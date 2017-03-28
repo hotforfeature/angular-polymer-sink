@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';
 
-import { PolymerDirective } from '../polymer.directive';
+import { PolymerDirective } from '../../angular-polymer';
 
 @Directive({
   selector: `paper-badge, paper-button, paper-card, paper-dropdown-menu, paper-icon-button,

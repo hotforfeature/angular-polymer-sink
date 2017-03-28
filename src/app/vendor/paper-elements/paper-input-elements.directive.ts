@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';
 
-import { PolymerDirective } from '../polymer.directive';
+import { PolymerDirective } from '../../angular-polymer';
 
 @Directive({
   selector: `paper-checkbox, paper-dropdown-menu, paper-input, paper-listbox, paper-radio-button,
