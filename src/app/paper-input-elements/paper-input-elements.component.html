@@ -8,6 +8,32 @@
 <div>
   <paper-checkbox [(checked)]="paperCheckboxChecked"
       [(disabled)]="paperCheckboxDisabled">Checkbox</paper-checkbox>
+  <paper-checkbox [(ngModel)]="paperCheckboxChecked"
+      [(disabled)]="paperCheckboxDisabled">Checkbox (NgModel)</paper-checkbox>
+</div>
+
+<h2>&lt;paper-dropdown-menu&gt;</h2>
+<div>
+  <label>Selected</label>
+  <select [(ngModel)]="paperDropdownMenuSelectedLabel">
+    <option>Croissant</option>
+    <option>Donut</option>
+    <option>Financier</option>
+    <option>Madeleine</option>
+  </select>
+  <label>Disabled</label>
+  <input type="checkbox" [(ngModel)]="paperDropdownMenuDisabled">
+</div>
+<div>
+  <paper-dropdown-menu label="Your favorite pastry"
+      [(ngModel)]="paperDropdownMenuSelectedLabel" [(disabled)]="paperDropdownMenuDisabled">
+    <paper-listbox attr-for-selected="name">
+      <paper-item name="Croissant">Croissant</paper-item>
+      <paper-item name="Donut">Donut</paper-item>
+      <paper-item name="Financier">Financier</paper-item>
+      <paper-item name="Madeleine">Madeleine</paper-item>
+    </paper-listbox>
+  </paper-dropdown-menu>
 </div>
 
 <h2>&lt;paper-input&gt;</h2>
@@ -20,6 +46,21 @@
       char-counter required [(ngModel)]="paperInputValue"></paper-input>
 </div>
 
+<h2>&lt;paper-listbox&gt;</h2>
+<div>
+  <label>Multi</label>
+  <input type="checkbox" [(ngModel)]="paperListboxMulti">
+  <div>
+    <label>Selected: </label><span>{{paperListboxSelectedJson}}</span>
+  </div>
+</div>
+<div>
+  <paper-listbox [(ngModel)]="paperListboxSelected" [multi]="paperListboxMulti">
+    <paper-item>Item 1</paper-item>
+    <paper-item>Item 2</paper-item>
+  </paper-listbox>
+</div>
+
 <h2>&lt;paper-radio-button&gt;</h2>
 <div>
   <label>Checked</label>
@@ -30,6 +71,8 @@
 <div>
   <paper-radio-button [(checked)]="paperRadioButtonChecked"
       [(disabled)]="paperRadioButtonDisabled">Radio Button</paper-radio-button>
+  <paper-radio-button [(ngModel)]="paperRadioButtonChecked"
+      [(disabled)]="paperRadioButtonDisabled">Radio Button (NgModel)</paper-radio-button>
 </div>
 
 <h2>&lt;paper-radio-group&gt;</h2>
@@ -42,11 +85,42 @@
   </select>
 </div>
 <div>
-  <paper-radio-group allow-empty-selection
-      [(selected)]="paperRadioGroupSelected"
-      (selectedItemChange)="onPaperRadioGroupSelectedItem($event)">
-    <paper-radio-button name="small">Small</paper-radio-button>
-    <paper-radio-button name="medium">Medium</paper-radio-button>
-    <paper-radio-button name="large">Large</paper-radio-button>
-  </paper-radio-group>
+  <div>
+    <paper-radio-group allow-empty-selection [(selected)]="paperRadioGroupSelected">
+      <paper-radio-button name="small">Small</paper-radio-button>
+      <paper-radio-button name="medium">Medium</paper-radio-button>
+      <paper-radio-button name="large">Large</paper-radio-button>
+    </paper-radio-group>
+  </div>
+  <div>
+    <paper-radio-group allow-empty-selection [(ngModel)]="paperRadioGroupSelected">
+      <paper-radio-button name="small">Small (NgModel)</paper-radio-button>
+      <paper-radio-button name="medium">Medium (NgModel)</paper-radio-button>
+      <paper-radio-button name="large">Large (NgModel)</paper-radio-button>
+    </paper-radio-group>
+  </div>
+</div>
+
+<h2>&lt;paper-slider&gt;</h2>
+<div>
+  <label>Value</label>
+  <input type="range" min="0" max="50" [(ngModel)]="paperSliderValue">
+  <label>Disabled</label>
+  <input type="checkbox" [(ngModel)]="paperSliderDisabled">
+</div>
+<div>
+  <paper-slider min="0" max="50"
+      [(ngModel)]="paperSliderValue" [(disabled)]="paperSliderDisabled"></paper-slider>
+</div>
+
+<h2>&lt;paper-toggle-button&gt;</h2>
+<div>
+  <label>Toggled</label>
+  <input type="checkbox" [(ngModel)]="paperToggleButtonValue">
+  <label>Disabled</label>
+  <input type="checkbox" [(ngModel)]="paperToggleButtonDisabled">
+</div>
+<div>
+  <paper-toggle-button [(ngModel)]="paperToggleButtonValue"
+      [(disabled)]="paperToggleButtonDisabled"></paper-toggle-button>
 </div>

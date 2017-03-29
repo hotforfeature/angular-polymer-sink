@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 
-import { PaperDropdownMenuControl, PaperInputControl } from './paper-input-controls';
+import {
+  PaperDropdownMenuControl,
+  PaperInputControl,
+  PaperSliderControl
+} from './paper-input-controls';
 import { PaperInputElement } from './paper-input-elements';
 import { PaperUiElement } from './paper-ui-elements';
 
@@ -9,12 +13,14 @@ import { PaperUiElement } from './paper-ui-elements';
     PaperDropdownMenuControl,
     PaperInputControl,
     PaperInputElement,
+    PaperSliderControl,
     PaperUiElement
   ],
   exports: [
     PaperDropdownMenuControl,
     PaperInputControl,
     PaperInputElement,
+    PaperSliderControl,
     PaperUiElement
   ]
 })

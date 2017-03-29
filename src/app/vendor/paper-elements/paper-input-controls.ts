@@ -1,4 +1,4 @@
-import { Directive, OnInit, Provider, ViewChild, forwardRef } from '@angular/core';
+import { Directive, HostListener, OnInit, Provider, ViewChild, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { IronControl } from '../../angular-polymer';
@@ -11,7 +11,7 @@ export const PAPER_INPUT_CONTROL_VALUE_ACCESSOR: Provider = {
 
 @Directive({
   selector: `paper-checkbox, paper-input, paper-listbox, paper-radio-button, paper-radio-group,
-    paper-slider, paper-toggle-button`,
+    paper-toggle-button`,
   providers: [PAPER_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 export class PaperInputControl extends IronControl { }
@@ -31,6 +31,23 @@ export class PaperDropdownMenuControl extends IronControl implements OnInit {
     this.ironSelector = this.elementRef.nativeElement.querySelector('.dropdown-content') ||
       this.elementRef.nativeElement.children[0];
     super.ngOnInit();
+  }
+}
+
+export const PAPER_SLIDER_CONTROL_VALUE_ACCESSOR: Provider = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => PaperSliderControl),
+  multi: true
+};
+
+@Directive({
+  selector: `paper-slider`,
+  providers: [PAPER_SLIDER_CONTROL_VALUE_ACCESSOR]
+})
+export class PaperSliderControl extends IronControl implements OnInit {
+  @HostListener('value-change', ['$event'])
+  private onValueChange(event: Event) {
+    this.onChange((<any>event.target).value);
   }
 }
 
