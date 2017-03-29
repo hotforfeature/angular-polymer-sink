@@ -121,11 +121,12 @@ export class IronControl implements ControlValueAccessor, OnInit, AfterViewInit,
 
   @HostListener('input', ['$event'])
   protected onInput(event: Event) {
-    if (this.ironCheckedElement) {
-      this.onChange((<any>event.target).checked);
-    } else {
-      this.onChange((<any>event.target).value);
-    }
+    this.onChange((<any>event.target).value);
+  }
+
+  @HostListener('checked-changed', ['$event'])
+  protected onCheckedChanged(event: CustomEvent) {
+    this.onChange(event.detail.value);
   }
 
   @HostListener('blur')
@@ -145,7 +146,7 @@ export class IronControl implements ControlValueAccessor, OnInit, AfterViewInit,
 
   @HostListener('iron-deselect')
   protected onIronDeselect() {
-    if (this.ngControl.dirty) {
+    if (this.ngControl && this.ngControl.dirty) {
       this.onIronSelect();
     } else {
       // Control was reset, do not fire a change event which would mark it as dirty
