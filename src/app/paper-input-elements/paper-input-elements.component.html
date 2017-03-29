@@ -10,6 +10,16 @@
       [(disabled)]="paperCheckboxDisabled">Checkbox</paper-checkbox>
 </div>
 
+<h2>&lt;paper-input&gt;</h2>
+<div>
+  <label>Value</label>
+  <input [(ngModel)]="paperInputValue">
+</div>
+<div>
+  <paper-input error-message="At least 5 characters" label="Paper Input" minlength="5"
+      char-counter ironControl required [(ngModel)]="paperInputValue"></paper-input>
+</div>
+
 <h2>&lt;paper-radio-button&gt;</h2>
 <div>
   <label>Checked</label>

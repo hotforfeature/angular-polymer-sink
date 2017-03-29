@@ -14,6 +14,8 @@ export class PaperInputElementsComponent implements OnPolymerChange {
   // <paper-checkbox>
   @PolymerProperty() paperCheckboxChecked;
   @PolymerProperty() paperCheckboxDisabled;
+  // <paper-input>
+  @PolymerProperty() paperInputValue;
   // <paper-radio-button>
   @PolymerProperty() paperRadioButtonChecked;
   @PolymerProperty() paperRadioButtonDisabled;

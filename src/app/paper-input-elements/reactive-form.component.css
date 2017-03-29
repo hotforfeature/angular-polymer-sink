@@ -1,0 +1,8 @@
+.forms {
+  display: flex;
+  flex-direction: row;
+}
+
+.form {
+  flex: 1;
+}

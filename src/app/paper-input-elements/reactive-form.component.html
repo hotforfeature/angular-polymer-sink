@@ -1,0 +1,71 @@
+<div class="forms">
+  <div class="form">
+    <h3>Last Submission (Angular)</h3>
+    <pre><code>{{formModel}}</code></pre>
+
+    <h2>Hero Form (Angular Reactive)</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <div>
+        <label for="name">Name</label>
+        <input [formControl]="form.controls.name" id="name" type="text">
+        <div [hidden]="form.controls.name.valid || form.controls.name.pristine">
+          Name is required
+        </div>
+      </div>
+
+      <div>
+        <label for="alterEgo">Alter Ego</label>
+        <input formControlName="alterEgo" id="alterEgo" type="text">
+        <div [hidden]="form.controls.alterEgo.valid || form.controls.alterEgo.pristine">
+          Must be at least 5 characters
+        </div>
+      </div>
+
+      <div>
+        <label for="power">Hero Power</label>
+        <select id="power" formControlName="power">
+          <option *ngFor="let pow of powers" [ngValue]="pow">{{pow.name}}</option>
+        </select>
+        <div [hidden]="form.controls.power.valid || form.controls.power.pristine">
+          Power is required
+        </div>
+      </div>
+
+      <button type="button" (click)="newHero()">New Hero</button>
+      <button type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+  </div>
+  <div class="form">
+    <h3>Last Submission (Polymer)</h3>
+    <pre><code>{{polyFormModel}}</code></pre>
+
+    <h2>Hero Form (Polymer Reactive)</h2>
+    <form #ngForm="ngForm" [formGroup]="polyForm" (ngSubmit)="onSubmit()" novalidate>
+      <!-- [formControl] bindings work -->
+      <paper-input error-message="Name is required" label="Name" ironControl
+          [formControl]="polyForm.controls.name"></paper-input>
+
+      <!-- As well as formControlName directives -->
+      <paper-input error-message="Must be at least 5 characters"
+          label="Alter Ego"
+          formControlName="alterEgo"
+          char-counter ironControl></paper-input>
+
+      <paper-dropdown-menu error-message="Power is required"
+          label="Hero Power"
+          formControlName="power"
+          ironControl [ironSelector]="listbox">
+        <paper-listbox #listbox attr-for-selected="value">
+          <paper-item *ngFor="let pow of powers" [value]="pow">{{pow.name}}</paper-item>
+        </paper-listbox>
+      </paper-dropdown-menu>
+
+      <div>
+        <paper-button (click)="newHero()">New Hero</paper-button>
+        <paper-button raised [disabled]="!polyForm.valid" (click)="ngForm.ngSubmit.emit()">
+          Submit
+        </paper-button>
+      </div>
+    </form>
+  </div>
+</div>

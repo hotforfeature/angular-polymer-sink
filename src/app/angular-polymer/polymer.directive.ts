@@ -1,5 +1,7 @@
 import { Directive, ElementRef, OnInit } from '@angular/core';
 
+import { getCustomElementClass } from './util';
+
 const Polymer: any = (<any>window).Polymer;
 const customElements: any = (<any>window).customElements;
 
@@ -10,10 +12,8 @@ export class PolymerDirective implements OnInit {
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
-    const htmlElement = Object.getPrototypeOf(this.elementRef.nativeElement);
-    if (htmlElement.is) {
-      const klass = customElements.get(htmlElement.is);
-
+    const klass = getCustomElementClass(this.elementRef);
+    if (klass) {
       // Setup Polymer to Angular event mapping
       let notify = [];
       notify = notify.concat(...this.getNotifyProperties(klass.prototype.properties || {}));
@@ -38,8 +38,6 @@ export class PolymerDirective implements OnInit {
           }
         }));
       });
-    } else {
-      console.warn(`<${htmlElement.tagName.toLowerCase()}> is not a registered element`);
     }
   }
 
