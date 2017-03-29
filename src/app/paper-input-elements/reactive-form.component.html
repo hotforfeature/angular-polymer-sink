@@ -7,8 +7,8 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
       <div>
         <label for="name">Name</label>
-        <input [formControl]="form.controls.name" id="name" type="text">
-        <div [hidden]="form.controls.name.valid || form.controls.name.pristine">
+        <input [formControl]="form.controls['name']" id="name" type="text">
+        <div [hidden]="form.controls['name'].valid || form.controls['name'].pristine">
           Name is required
         </div>
       </div>
@@ -16,7 +16,7 @@
       <div>
         <label for="alterEgo">Alter Ego</label>
         <input formControlName="alterEgo" id="alterEgo" type="text">
-        <div [hidden]="form.controls.alterEgo.valid || form.controls.alterEgo.pristine">
+        <div [hidden]="form.controls['alterEgo'].valid || form.controls['alterEgo'].pristine">
           Must be at least 5 characters
         </div>
       </div>
@@ -26,7 +26,7 @@
         <select id="power" formControlName="power">
           <option *ngFor="let pow of powers" [ngValue]="pow">{{pow.name}}</option>
         </select>
-        <div [hidden]="form.controls.power.valid || form.controls.power.pristine">
+        <div [hidden]="form.controls['power'].valid || form.controls['power'].pristine">
           Power is required
         </div>
       </div>
@@ -43,7 +43,7 @@
     <form #ngForm="ngForm" [formGroup]="polyForm" (ngSubmit)="onSubmit()" novalidate>
       <!-- [formControl] bindings work -->
       <paper-input error-message="Name is required" label="Name" ironControl
-          [formControl]="polyForm.controls.name"></paper-input>
+          [formControl]="polyForm.controls['name']"></paper-input>
 
       <!-- As well as formControlName directives -->
       <paper-input error-message="Must be at least 5 characters"
