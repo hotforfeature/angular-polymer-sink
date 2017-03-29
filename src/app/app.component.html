@@ -1,12 +1,20 @@
-<h1>iron-elements</h1>
-<app-iron-elements></app-iron-elements>
+<h1 (click)="iron.toggle()">iron-elements</h1>
+<iron-collapse #iron>
+  <app-iron-elements></app-iron-elements>
+</iron-collapse>
 
-<h1>paper-input-elements</h1>
-<app-paper-input-elements></app-paper-input-elements>
+<h1 (click)="paperInput.toggle()">paper-input-elements</h1>
+<iron-collapse #paperInput>
+  <app-paper-input-elements></app-paper-input-elements>
+</iron-collapse>
 
-<h1>paper-ui-elements</h1>
-<app-paper-ui-elements></app-paper-ui-elements>
+<h1 (click)="paperUi.toggle()">paper-ui-elements</h1>
+<iron-collapse #paperUi>
+  <app-paper-ui-elements></app-paper-ui-elements>
+</iron-collapse>
 
-<h1>Forms</h1>
-<app-paper-template-form></app-paper-template-form>
-<app-paper-reactive-form></app-paper-reactive-form>
+<h1 (click)="forms.toggle()">Forms</h1>
+<iron-collapse #forms>
+  <app-paper-template-form></app-paper-template-form>
+  <app-paper-reactive-form></app-paper-reactive-form>
+</iron-collapse>
