@@ -40,24 +40,18 @@
 
     <h2>Hero Form (Polymer)</h2>
     <form (ngSubmit)="onSubmit()" #polyForm="ngForm">
-      <paper-input error-message="Name is required" label="Name" name="name" ironControl required
+      <paper-input error-message="Name is required" label="Name" name="name" required
           [(ngModel)]="model.name"></paper-input>
 
       <paper-input error-message="Must be at least 5 characters"
           label="Alter Ego"
           minlength="5"
           name="alterEgo"
-          char-counter ironControl [(ngModel)]="model.alterEgo"></paper-input>
+          char-counter [(ngModel)]="model.alterEgo"></paper-input>
 
       <paper-dropdown-menu error-message="Power is required" label="Hero Power" name="power"
-          ironControl required [(ngModel)]="model.power" [ironSelector]="listbox">
-        <!-- The dropdown menu isn't an IronSelectable, it wraps one. However, it is an IronFormElement
-        with validation. We tell ironControl and the model to use it as the form element, but point to
-        the correct ironSelector that manipulates the data.
-
-        We could use <paper-listbox> on its own without <paper-dropdown-menu> as an ironControl without
-        needing to specify the ironSelector -->
-        <paper-listbox #listbox attr-for-selected="value">
+          required [(ngModel)]="model.power">
+        <paper-listbox attr-for-selected="value">
           <paper-item *ngFor="let pow of powers" [value]="pow">{{pow.name}}</paper-item>
         </paper-listbox>
       </paper-dropdown-menu>

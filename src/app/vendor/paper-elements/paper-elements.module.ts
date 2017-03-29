@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 
-import { PaperInputElementsDirective } from './paper-input-elements.directive';
-import { PaperUiElementsDirective } from './paper-ui-elements.directive';
+import { PaperDropdownMenuControl, PaperInputControl } from './paper-input-controls';
+import { PaperInputElement } from './paper-input-elements';
+import { PaperUiElement } from './paper-ui-elements';
 
 @NgModule({
   declarations: [
-    PaperInputElementsDirective,
-    PaperUiElementsDirective
+    PaperDropdownMenuControl,
+    PaperInputControl,
+    PaperInputElement,
+    PaperUiElement
   ],
   exports: [
-    PaperInputElementsDirective,
-    PaperUiElementsDirective
+    PaperDropdownMenuControl,
+    PaperInputControl,
+    PaperInputElement,
+    PaperUiElement
   ]
 })
 export class PaperElementsModule { }

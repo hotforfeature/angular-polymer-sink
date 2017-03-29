@@ -7,4 +7,4 @@ import { PolymerDirective } from '../../angular-polymer';
     paper-item, paper-menu, paper-menu-button, paper-progress, paper-spinner, paper-swatch-picker,
     paper-tabs, paper-toolbar, paper-tooltip`
 })
-export class PaperUiElementsDirective extends PolymerDirective { }
+export class PaperUiElement extends PolymerDirective { }

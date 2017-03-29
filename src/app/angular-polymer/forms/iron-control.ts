@@ -32,16 +32,16 @@ export class IronControl implements ControlValueAccessor, OnInit, AfterViewInit,
   protected onChange = (_: any) => {};
   protected onTouched = () => {};
 
-  private ngControl: NgControl;
-  private statusSub: Subscription;
-  private ironCheckedElement = false;
-  private ironSelectable = false;
-  private ironMultiSelectable = false;
-  private ironValidatable = false;
+  protected ngControl: NgControl;
+  protected statusSub: Subscription;
+  protected ironCheckedElement = false;
+  protected ironSelectable = false;
+  protected ironMultiSelectable = false;
+  protected ironValidatable = false;
 
-  constructor(private elementRef: ElementRef,
-      private injector: Injector,
-      private renderer: Renderer) { }
+  constructor(protected elementRef: ElementRef,
+      protected injector: Injector,
+      protected renderer: Renderer) { }
 
   ngOnInit() {
     const ironFormElement = 'value' in this.elementRef.nativeElement;
@@ -59,11 +59,8 @@ export class IronControl implements ControlValueAccessor, OnInit, AfterViewInit,
   }
 
   ngAfterViewInit() {
-    this.ngControl = this.injector.get(NgControl, undefined);
-    if (!this.ngControl) {
-      console.warn(`${getTagName(this.elementRef)} does not have an NgControl. Are you missing ` +
-        `an ngModel or formControlName?`);
-    } else {
+    this.ngControl = this.injector.get(NgControl, null);
+    if (this.ngControl) {
       if (this.ironValidatable) {
         // Custom validators should update native element's validity
         this.statusSub = this.ngControl.statusChanges.subscribe(() => {

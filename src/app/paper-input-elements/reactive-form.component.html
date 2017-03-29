@@ -42,20 +42,19 @@
     <h2>Hero Form (Polymer Reactive)</h2>
     <form #ngForm="ngForm" [formGroup]="polyForm" (ngSubmit)="onSubmit()" novalidate>
       <!-- [formControl] bindings work -->
-      <paper-input error-message="Name is required" label="Name" ironControl
+      <paper-input error-message="Name is required" label="Name"
           [formControl]="polyForm.controls['name']"></paper-input>
 
       <!-- As well as formControlName directives -->
       <paper-input error-message="Must be at least 5 characters"
           label="Alter Ego"
           formControlName="alterEgo"
-          char-counter ironControl></paper-input>
+          char-counter></paper-input>
 
       <paper-dropdown-menu error-message="Power is required"
           label="Hero Power"
-          formControlName="power"
-          ironControl [ironSelector]="listbox">
-        <paper-listbox #listbox attr-for-selected="value">
+          formControlName="power">
+        <paper-listbox attr-for-selected="value">
           <paper-item *ngFor="let pow of powers" [value]="pow">{{pow.name}}</paper-item>
         </paper-listbox>
       </paper-dropdown-menu>
