@@ -37,6 +37,7 @@ angular-polymer targets Angular 4+ and Polymer 2+. It is not compatible with ear
 - [What if I use OnPush change detection?](#change-detection)
 - [How do I make an element work with Angular forms?](#forms-setup)
 - [What about non-Polymer form elements?](#forms)
+- [Can I use templates for an element?](#polymer-templates)
 
 ### Installation
 
@@ -633,3 +634,117 @@ Don't forget that
 
 - Angular validation will update `invalid` on the custom element
 - Custom element validation will update Angular
+
+### Polymer Templates
+
+[Remember that currently &lt;template&gt; elements are broken](#broken). When this documentation refers to using a `<template>` element, the app should use `<ng-template polymer-template>` until the linked issue is fixed.
+
+There are three "templates" in Angular. Component templates, `<ng-template>`, and the native `<template>` element.
+
+When Angular parses a component template, it will dynamically create elements using a Renderer. Polymer elements use Templatizer to stamp templates onto the DOM.
+
+Angular is unaware of any DOM manipulations Polymer makes. This means that an app _cannot_ use an Angular component or syntax in a Polymer template. Polymer stamps the element onto the DOM, but Angular doesn't know it needs to instantiate the element.
+
+Future support may change this, but at the moment remember the cardinal rule: **Angular has no power in Polymer templates**.
+
+Let's take a look at `<iron-list>` for example:
+
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-poly',
+  template: `
+    <iron-list [items]="items" as="item">
+      <ng-template polymer-template>
+        <div>[[item]]</div>
+      </ng-template>
+    </iron-list>
+  `
+})
+export class PolyComponent {
+  items = [
+    'one',
+    'two',
+    'three'
+  ];
+}
+```
+
+Note the `[[]]` syntax. This is a Polymer template, which means we must use Polymer template syntax when data binding.
+
+Similarly, we cannot use an Angular component inside our `<iron-list>`, since it will not be instantiated by Angular. It will simply be an HTMLUnknownElement that was stamped by Polymer.
+
+Luckily there are few elements in Polymer where a user-defined template is needed. Many Polymer utility templates (such as `dom-if` and `dom-repeat`) are present in Angular as `*ngIf` and `*ngFor`.
+
+When templates are required in a Polymer element, the app must fully commit and use only Polymer elements for data binding.
+
+index.html
+```html
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Angular-Polymer App</title>
+  <base href="/">
+
+  <script src="assets/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+  <link href="assets/bower_components/paper-button/paper-button.html" rel="import">
+</head>
+<body>
+  <!-- If you want to define custom elements, they must be defined in "real" HTML,
+  not a component template.
+
+  We're defining it here in index.html, but we could create a my-item.html
+  in `assets/my-item/my-item.html` and import it like a normal element -->
+  <dom-module id="my-item">
+    <template>
+      <div>The item is [[item]]</div>
+    </template>
+    <script>
+      // This example is a hybrid Polymer element that works in ES5
+      // TypeScript will not transpile code here or in the assets folder
+      Polymer({
+        is: 'my-item',
+        properties: {
+          item: String
+        }
+      });
+    </script>
+  </dom-module>
+
+  <app-root>Loading...</app-root>
+  <script>
+    // For browsers that support webcomponents, the loader will immediately fire the ready event
+    // before Angular bootstraps. This flag will let main.ts know to continue rather than wait for
+    // the event.
+    window.webComponentsReady = false;
+    window.addEventListener('WebComponentsReady', function() {
+      window.webComponentsReady = true;
+    });
+  </script>
+</body>
+</html>
+```
+
+app.component.ts
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-poly',
+  template: `
+    <iron-list [items]="items" as="item">
+      <ng-template polymer-template>
+        <my-item item="[[item]]"></my-item>
+      </ng-template>
+    </iron-list>
+  `
+})
+export class PolyComponent {
+  items = [
+    'one',
+    'two',
+    'three'
+  ];
+}
+```
