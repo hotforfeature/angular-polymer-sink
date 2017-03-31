@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { OnPolymerChange } from '../angular-polymer';
+import { OnPolymerChange } from '@codebakery/origami';
 
 @Component({
   selector: 'app-paper-reactive-form',

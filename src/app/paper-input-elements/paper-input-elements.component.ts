@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
-
-import { OnPolymerChange, PolymerProperty } from '../angular-polymer';
+import { OnPolymerChange, PolymerProperty } from '@codebakery/origami';
 
 @Component({
   selector: 'app-paper-input-elements',
